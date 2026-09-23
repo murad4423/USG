@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>General Ultrasound Report</title>
+<style>
+  /*
+    'Nirmala UI' is bundled with Windows 10/11 and covers Bengali (Bangla)
+    glyphs, so any Bangla field value (patient name, findings, etc.)
+    renders correctly without installing anything extra. Falls back to
+    Segoe UI / sans-serif for Latin text.
+  */
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Nirmala UI', 'Segoe UI', Arial, sans-serif;
+    font-size: 12pt;
+    color: #1a1a1a;
+    margin: 0;
+    padding: 0;
+  }
+  .report {
+    width: 100%;
+  }
+  .report-header {
+    text-align: center;
+    border-bottom: 3px solid #1f4e79;
+    padding-bottom: 10px;
+    margin-bottom: 16px;
+  }
+  .report-header h1 {
+    font-size: 16pt;
+    margin: 0 0 2px 0;
+    color: #1f4e79;
+    letter-spacing: 0.5px;
+  }
+  .report-header .exam-type {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-top: 4px;
+  }
+  table.patient-info {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 14px;
+    font-size: 10.5pt;
+  }
+  table.patient-info td {
+    padding: 3px 6px;
+    vertical-align: top;
+  }
+  table.patient-info td.label {
+    font-weight: bold;
+    width: 16%;
+    color: #333;
+  }
+  .section-title {
+    font-weight: bold;
+    font-size: 11.5pt;
+    color: #1f4e79;
+    margin: 14px 0 6px 0;
+    border-bottom: 1px solid #1f4e79;
+    padding-bottom: 2px;
+  }
+  .findings-box {
+    border: 1px solid #d9d9d9;
+    background-color: #f9fafb;
+    padding: 10px 12px;
+    margin-bottom: 14px;
+    min-height: 80px;
+    white-space: pre-wrap;
+  }
+  .impression-box {
+    border: 1px solid #1f4e79;
+    background-color: #f4f7fa;
+    padding: 10px 12px;
+    margin-bottom: 20px;
+    min-height: 40px;
+    white-space: pre-wrap;
+  }
+  .signature-block {
+    margin-top: 40px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .signature-block .signature {
+    text-align: center;
+    width: 260px;
+  }
+  .signature-line {
+    border-top: 1px solid #1a1a1a;
+    margin-top: 40px;
+    padding-top: 4px;
+    font-size: 10pt;
+  }
+  .footer-note {
+    margin-top: 24px;
+    padding-top: 8px;
+    border-top: 1px dashed #999;
+    font-size: 9pt;
+    color: #555;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <div class="report">
+
+    <div class="report-header">
+      <h1>Salauddin Specialized Hospital Ltd.</h1>
+      <div class="exam-type">Ultrasonography Report — General (US)</div>
+    </div>
+
+    <table class="patient-info">
+      <tr>
+        <td class="label">Patient Name:</td><td>{{PATIENT_NAME}}</td>
+        <td class="label">Patient ID:</td><td>{{PATIENT_ID}}</td>
+      </tr>
+      <tr>
+        <td class="label">Age:</td><td>{{AGE}}</td>
+        <td class="label">Sex:</td><td>{{SEX}}</td>
+      </tr>
+      <tr>
+        <td class="label">Exam Date:</td><td>{{DATE}}</td>
+        <td class="label">Ref. Physician:</td><td>{{REFERRING_PHYSICIAN}}</td>
+      </tr>
+    </table>
+
+    <div class="section-title">Findings</div>
+    <div class="findings-box">{{FINDINGS}}</div>
+
+    <div class="section-title">Impression</div>
+    <div class="impression-box">{{IMPRESSION}}</div>
+
+    <div class="signature-block">
+      <div class="signature">
+        <div class="signature-line">{{SONOLOGIST_NAME}}<br/>Sonologist</div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      কম্পিউটার জেনারেটেড রিপোর্ট, সিলমোহর ও স্বাক্ষর ছাড়া বৈধ নয়।
+    </div>
+
+  </div>
+</body>
+</html>

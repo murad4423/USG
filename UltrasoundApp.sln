@@ -1,0 +1,78 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.Host", "src\UltrasoundApp.Host\UltrasoundApp.Host.csproj", "{1E4A6C42-DC37-4809-ABDD-450BDF578BD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.Core", "src\UltrasoundApp.Core\UltrasoundApp.Core.csproj", "{C428679C-6C58-4290-A2C4-AB05630DCD8A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.Dicom", "src\UltrasoundApp.Dicom\UltrasoundApp.Dicom.csproj", "{FDEBBE8B-CF79-4B3A-90E5-78C35C5E43DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.Dicom.ManualTest", "src\UltrasoundApp.Dicom.ManualTest\UltrasoundApp.Dicom.ManualTest.csproj", "{B02187FB-FEB8-4780-950C-46D1689ED840}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.Data", "src\UltrasoundApp.Data\UltrasoundApp.Data.csproj", "{A2A25CE6-7854-46C6-98A1-A55020A0EF24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.Templating", "src\UltrasoundApp.Templating\UltrasoundApp.Templating.csproj", "{867FB798-3225-4A83-8578-CD078DE0B767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.Printing", "src\UltrasoundApp.Printing\UltrasoundApp.Printing.csproj", "{4436C0B9-2EEE-4793-9587-8F924E9C33E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.Printing.ManualTest", "src\UltrasoundApp.Printing.ManualTest\UltrasoundApp.Printing.ManualTest.csproj", "{D8D69064-F9DE-442F-9B77-BBD3FEC6E082}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.ReportRender.ManualTest", "src\UltrasoundApp.ReportRender.ManualTest\UltrasoundApp.ReportRender.ManualTest.csproj", "{54EEDBC3-2212-4D41-B489-62C6E0E14E69}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UltrasoundApp.Settings.ManualTest", "src\UltrasoundApp.Settings.ManualTest\UltrasoundApp.Settings.ManualTest.csproj", "{28DCEE86-BA54-4298-BC57-F31C612C1339}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1E4A6C42-DC37-4809-ABDD-450BDF578BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E4A6C42-DC37-4809-ABDD-450BDF578BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E4A6C42-DC37-4809-ABDD-450BDF578BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E4A6C42-DC37-4809-ABDD-450BDF578BD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C428679C-6C58-4290-A2C4-AB05630DCD8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C428679C-6C58-4290-A2C4-AB05630DCD8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C428679C-6C58-4290-A2C4-AB05630DCD8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C428679C-6C58-4290-A2C4-AB05630DCD8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDEBBE8B-CF79-4B3A-90E5-78C35C5E43DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDEBBE8B-CF79-4B3A-90E5-78C35C5E43DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDEBBE8B-CF79-4B3A-90E5-78C35C5E43DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDEBBE8B-CF79-4B3A-90E5-78C35C5E43DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2A25CE6-7854-46C6-98A1-A55020A0EF24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2A25CE6-7854-46C6-98A1-A55020A0EF24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2A25CE6-7854-46C6-98A1-A55020A0EF24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2A25CE6-7854-46C6-98A1-A55020A0EF24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{867FB798-3225-4A83-8578-CD078DE0B767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{867FB798-3225-4A83-8578-CD078DE0B767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{867FB798-3225-4A83-8578-CD078DE0B767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{867FB798-3225-4A83-8578-CD078DE0B767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4436C0B9-2EEE-4793-9587-8F924E9C33E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4436C0B9-2EEE-4793-9587-8F924E9C33E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4436C0B9-2EEE-4793-9587-8F924E9C33E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4436C0B9-2EEE-4793-9587-8F924E9C33E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8D69064-F9DE-442F-9B77-BBD3FEC6E082}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8D69064-F9DE-442F-9B77-BBD3FEC6E082}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8D69064-F9DE-442F-9B77-BBD3FEC6E082}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8D69064-F9DE-442F-9B77-BBD3FEC6E082}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54EEDBC3-2212-4D41-B489-62C6E0E14E69}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54EEDBC3-2212-4D41-B489-62C6E0E14E69}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54EEDBC3-2212-4D41-B489-62C6E0E14E69}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54EEDBC3-2212-4D41-B489-62C6E0E14E69}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B02187FB-FEB8-4780-950C-46D1689ED840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B02187FB-FEB8-4780-950C-46D1689ED840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B02187FB-FEB8-4780-950C-46D1689ED840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B02187FB-FEB8-4780-950C-46D1689ED840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28DCEE86-BA54-4298-BC57-F31C612C1339}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28DCEE86-BA54-4298-BC57-F31C612C1339}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28DCEE86-BA54-4298-BC57-F31C612C1339}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28DCEE86-BA54-4298-BC57-F31C612C1339}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FDA3320C-5A58-4B1C-9D6F-AB281FAF1775}
+	EndGlobalSection
+EndGlobal

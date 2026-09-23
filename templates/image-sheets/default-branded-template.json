@@ -1,0 +1,16 @@
+{
+  "logoPath": "templates/image-sheets/assets/default-logo.png",
+  "hospitalName": "General Hospital",
+  "addressLines": [
+    "123 Main Street",
+    "Anytown, ST 00000",
+    "Tel: (000) 000-0000"
+  ],
+  "headerText": "Ultrasound Image Report",
+  "footerText": "Confidential \u2014 For Clinical Use Only",
+  "pageSize": "A4",
+  "marginMillimeters": 12,
+  "cellSpacingPoints": 8,
+  "maxImagesPerPage": 12,
+  "showImageCaptions": false
+}
