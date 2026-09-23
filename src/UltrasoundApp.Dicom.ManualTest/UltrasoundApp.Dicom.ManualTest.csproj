@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>UltrasoundApp.Dicom.ManualTest</RootNamespace>
+    <AssemblyName>UltrasoundApp.Dicom.ManualTest</AssemblyName>
+  </PropertyGroup>
+
+  <!--
+    Plain net8.0 (no WinForms/WebView2) is enough here: unlike
+    UltrasoundApp.Templating.ManualTest/UltrasoundApp.ReportRender.ManualTest
+    (which need a real WebView2 host for PdfRenderer), everything this
+    harness touches — DicomScpListener, DicomFileParser,
+    DicomProcessingService, the Data repositories — is already
+    cross-platform.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\UltrasoundApp.Core\UltrasoundApp.Core.csproj" />
+    <ProjectReference Include="..\UltrasoundApp.Data\UltrasoundApp.Data.csproj" />
+    <ProjectReference Include="..\UltrasoundApp.Dicom\UltrasoundApp.Dicom.csproj" />
+  </ItemGroup>
+
+</Project>

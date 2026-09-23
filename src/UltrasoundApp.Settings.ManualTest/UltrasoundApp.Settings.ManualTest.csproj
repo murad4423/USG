@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>UltrasoundApp.Settings.ManualTest</RootNamespace>
+    <AssemblyName>UltrasoundApp.Settings.ManualTest</AssemblyName>
+  </PropertyGroup>
+
+  <!--
+    Plain net8.0 (no WinForms/WebView2) is enough: SettingsService,
+    ISettingsRepository/SettingsRepository, and the Settings table are
+    all cross-platform, the same way UltrasoundApp.Dicom.ManualTest is.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\UltrasoundApp.Core\UltrasoundApp.Core.csproj" />
+    <ProjectReference Include="..\UltrasoundApp.Data\UltrasoundApp.Data.csproj" />
+  </ItemGroup>
+
+</Project>

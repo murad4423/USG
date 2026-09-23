@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!--
+      Windows-specific TFM (matching UltrasoundApp.Host / UltrasoundApp.Printing)
+      because PdfRenderer hosts a real WebView2 control
+      (Microsoft.Web.WebView2.WinForms) on a dedicated hidden WinForms Form to
+      drive headless print-to-PDF. The rest of the app is Windows-only already
+      (WinForms + WebView2), so this doesn't reduce portability.
+    -->
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>UltrasoundApp.Templating</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      Scriban chosen over Handlebars.Net for this feature. Both would work,
+      but Scriban is a single dependency-free package (Handlebars.Net pulls
+      in extra transitive packages for helper support we don't need here),
+      has no built-in HTML auto-escaping to fight with (report field values —
+      including Bangla text — need to pass straight through unmodified, not
+      HTML-entity-encoded), and its {{ TOKEN }} placeholder syntax lines up
+      exactly with the ALL_CAPS tokens the report templates already use, so
+      a template author never has to write anything fancier than a bare
+      token like {{PATIENT_NAME}}.
+    -->
+    <PackageReference Include="Scriban" Version="5.10.0" />
+    <!-- Same WebView2 SDK version already used by UltrasoundApp.Host. -->
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UltrasoundApp.Core\UltrasoundApp.Core.csproj" />
+  </ItemGroup>
+
+</Project>

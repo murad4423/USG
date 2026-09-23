@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>UltrasoundApp.ReportRender.ManualTest</RootNamespace>
+    <AssemblyName>UltrasoundApp.ReportRender.ManualTest</AssemblyName>
+  </PropertyGroup>
+
+  <!--
+    Windows TFM + WinForms are required transitively because this harness
+    references UltrasoundApp.Templating (PdfRenderer hosts a real WebView2
+    control), the same reason UltrasoundApp.Templating.ManualTest needs them.
+  -->
+
+  <ItemGroup>
+    <ProjectReference Include="..\UltrasoundApp.Core\UltrasoundApp.Core.csproj" />
+    <ProjectReference Include="..\UltrasoundApp.Data\UltrasoundApp.Data.csproj" />
+    <ProjectReference Include="..\UltrasoundApp.Templating\UltrasoundApp.Templating.csproj" />
+  </ItemGroup>
+
+</Project>

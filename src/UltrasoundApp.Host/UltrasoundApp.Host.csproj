@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>UltrasoundApp.Host</RootNamespace>
+    <AssemblyName>UltrasoundApp</AssemblyName>
+    <ApplicationIcon />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.2903.40" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UltrasoundApp.Core\UltrasoundApp.Core.csproj" />
+    <ProjectReference Include="..\UltrasoundApp.Dicom\UltrasoundApp.Dicom.csproj" />
+    <ProjectReference Include="..\UltrasoundApp.Data\UltrasoundApp.Data.csproj" />
+    <ProjectReference Include="..\UltrasoundApp.Templating\UltrasoundApp.Templating.csproj" />
+    <ProjectReference Include="..\UltrasoundApp.Printing\UltrasoundApp.Printing.csproj" />
+  </ItemGroup>
+
+  <!--
+    The React app is built separately (see src/frontend) with `npm run build`,
+    which outputs static files to src/frontend/dist. This target copies that
+    output into the Host's build folder under wwwroot/ so it can be loaded
+    into WebView2 via SetVirtualHostNameToFolderMapping.
+
+    NOTE: this only copies if dist/ already exists. Run `npm run build` in
+    src/frontend BEFORE building/running the Host the first time (or after
+    any frontend change). See docs/README.md for the full sequence.
+  -->
+  <Target Name="CopyFrontendBuild" AfterTargets="Build">
+    <ItemGroup>
+      <FrontendDistFiles Include="..\frontend\dist\**\*" Condition="Exists('..\frontend\dist')" />
+    </ItemGroup>
+    <Copy SourceFiles="@(FrontendDistFiles)"
+          DestinationFolder="$(OutDir)wwwroot\%(RecursiveDir)"
+          SkipUnchangedFiles="true"
+          Condition="Exists('..\frontend\dist')" />
+  </Target>
+
+  <!--
+    `dotnet publish` does NOT automatically carry files copied into the
+    build output folder (bin/...) by the CopyFrontendBuild target above —
+    publish computes its own file list from project items and referenced
+    outputs, so wwwroot/ needs to be copied a second time, straight into
+    $(PublishDir), or a published .exe opens to a blank window with no way
+    to load the React UI. Same story for templates/ (the report HTML
+    templates + image-sheet branding JSON that TemplatingPaths/
+    PrintingPaths resolve next to the executable once there's no
+    UltrasoundApp.sln to walk up to — see AppPaths.cs's fallback). Both are
+    plain file copies, not build outputs, so a Target hooked to
+    AfterTargets="Publish" is the correct place for them rather than trying
+    to route them through <Content Include=.../> item semantics.
+
+    data/ is deliberately NOT copied here: every *Paths.cs helper
+    (AppPaths, TemplatingPaths, PrintingPaths, ImageStoragePaths, AppLog)
+    creates its own data/ subfolder on first use via Directory.CreateDirectory,
+    so a fresh publish output with no data/ folder at all is the correct,
+    intended starting state for a new install.
+  -->
+  <Target Name="CopyStaticAssetsToPublishDir" AfterTargets="Publish">
+    <ItemGroup>
+      <FrontendDistFilesForPublish Include="..\frontend\dist\**\*" Condition="Exists('..\frontend\dist')" />
+      <TemplateFilesForPublish Include="..\..\templates\**\*" Condition="Exists('..\..\templates')" />
+    </ItemGroup>
+    <Error Condition="!Exists('..\frontend\dist')"
+           Text="src/frontend/dist is missing — run 'npm install &amp;&amp; npm run build' in src/frontend before publishing, or the published app will open to a blank window." />
+    <Copy SourceFiles="@(FrontendDistFilesForPublish)"
+          DestinationFolder="$(PublishDir)wwwroot\%(RecursiveDir)"
+          SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(TemplateFilesForPublish)"
+          DestinationFolder="$(PublishDir)templates\%(RecursiveDir)"
+          SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

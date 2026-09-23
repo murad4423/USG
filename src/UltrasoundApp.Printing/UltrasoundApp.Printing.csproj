@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!--
+      Windows-specific TFM (matching UltrasoundApp.Host) because SilentPrinter
+      uses System.Drawing.Printing (PrinterSettings) and Windows shell verbs
+      to talk to installed printers. The rest of the app is Windows-only
+      already (WinForms + WebView2), so this doesn't reduce portability.
+    -->
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RootNamespace>UltrasoundApp.Printing</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      QuestPDF: chosen over SkiaSharp for this feature. QuestPDF's fluent,
+      declarative layout API (Row/Column/Table with relative sizing) is a
+      much more direct fit for "a grid that reflows itself based on how many
+      images are selected" than SkiaSharp, which is an immediate-mode 2D
+      canvas — with SkiaSharp we would be hand-computing every cell's pixel
+      rectangle ourselves. QuestPDF also targets PDF generation specifically
+      (which is what we need to hand to a printer), whereas SkiaSharp would
+      need an additional step (SKDocument.CreatePdf) bolted on top of manual
+      drawing code.
+
+      Licensing note (relevant for a hospital deployment, not just a dev
+      detail): QuestPDF's Community license is free only for organizations
+      under $1M USD annual gross revenue; larger organizations require a
+      paid Professional/Enterprise license from https://www.questpdf.com/pricing.html.
+      QuestPDF.Settings.License is set to Community in ImageSheetComposer for
+      this dev/prototype stage — revisit before shipping to a paying
+      hospital customer above that revenue threshold.
+    -->
+    <PackageReference Include="QuestPDF" Version="2024.10.3" />
+    <!-- Needed for System.Drawing.Printing.PrinterSettings in SilentPrinter. -->
+    <PackageReference Include="System.Drawing.Common" Version="8.0.10" />
+    <!--
+      PDFtoImage: rasterizes the Settings screen's uploaded "Image Template"
+      PDF (its first page) into a cached background PNG — see
+      ImageTemplateBackground.cs. A PDFium-backed wrapper (via SkiaSharp)
+      chosen for exact, deterministic PDF-page rendering at a fixed DPI, with
+      no browser/WebView2 involved. MIT licensed.
+    -->
+    <PackageReference Include="PDFtoImage" Version="5.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UltrasoundApp.Core\UltrasoundApp.Core.csproj" />
+  </ItemGroup>
+
+</Project>
