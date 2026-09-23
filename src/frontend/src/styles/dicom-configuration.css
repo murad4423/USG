@@ -1,0 +1,167 @@
+/* Settings > DICOM Configuration (DicomConfigurationSection.tsx) */
+
+.dicom-config__intro {
+  margin: 0 0 14px;
+  max-width: 880px;
+}
+
+.dicom-config__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.dicom-config__card {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 14px 16px 16px;
+}
+
+.dicom-config__card--wide {
+  margin-top: 16px;
+}
+
+.dicom-config__card-title {
+  margin: 0 0 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #343a40;
+}
+
+.dicom-config__card-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.dicom-config__fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.dicom-config__field--wide {
+  grid-column: 1 / -1;
+}
+
+/* Receiver status */
+.dicom-config__status {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 12.5px;
+}
+
+.dicom-config__status--good {
+  color: #2b8a3e;
+}
+
+.dicom-config__status--bad {
+  color: #c92a2a;
+}
+
+.dicom-config__status--pending {
+  color: #a86400;
+}
+
+/* Test Connection */
+.dicom-config__test-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.dicom-config__test-note {
+  font-size: 12px;
+  color: #868e96;
+}
+
+.dicom-config__test-result {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid;
+  font-size: 13px;
+}
+
+.dicom-config__test-result--good {
+  background: #ebfbee;
+  border-color: #b2f2bb;
+  color: #2b8a3e;
+}
+
+.dicom-config__test-result--bad {
+  background: #fff5f5;
+  border-color: #ffc9c9;
+  color: #c92a2a;
+}
+
+.dicom-config__test-message {
+  margin: 0;
+  font-weight: 600;
+}
+
+.dicom-config__test-hint {
+  margin: 6px 0 0;
+  font-size: 12.5px;
+  color: #495057;
+}
+
+/* What to enter on the machine */
+.dicom-config__link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 12.5px;
+  color: #1f4e79;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.dicom-config__table-intro {
+  margin: 0 0 10px;
+}
+
+.dicom-config__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.dicom-config__table th,
+.dicom-config__table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px 10px;
+  border-top: 1px solid #e9ecef;
+}
+
+.dicom-config__table th {
+  width: 240px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.dicom-config__table th span {
+  display: block;
+  font-weight: 400;
+  font-size: 11.5px;
+  color: #868e96;
+}
+
+.dicom-config__adapter {
+  font-size: 12px;
+  color: #868e96;
+}
+
+.dicom-config__notes {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  font-size: 12px;
+  color: #868e96;
+  line-height: 1.5;
+}

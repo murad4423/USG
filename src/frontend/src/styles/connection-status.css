@@ -1,0 +1,38 @@
+/* Live connection indicators (ConnectionStatusIndicators.tsx). Loaded after global.css. */
+
+/* Slim strip: the two dots sit together at the bottom, bridge first, machine below it. */
+.app-rail__statuses {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.app-rail__statuses .app-rail__status {
+  margin-top: 0;
+}
+
+/* Menu: two stacked lines; only the first has the divider above it. */
+.connection-status .bridge-status {
+  border-top: 1px solid #3a4552;
+}
+
+.machine-status {
+  padding: 4px 14px 12px;
+  font-size: 12px;
+  color: #adb5bd;
+}
+
+.machine-status .spinner__ring {
+  border-color: #4a5568;
+  border-top-color: #4dabf7;
+}
+
+.machine-status--connected {
+  color: #69db7c;
+}
+
+.machine-status--unreachable {
+  color: #ff8787;
+}

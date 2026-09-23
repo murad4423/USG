@@ -1,0 +1,257 @@
+/*
+ * Report Template Builder — additions (saved-template list, editor bar with
+ * the Save button, alignment/bullet buttons, margin fields, dialogs).
+ * Loaded after global.css, so the few rules that override a global.css value
+ * (sidebar width, canvas lists) are intentional.
+ */
+
+/* Wider toolbar strip so four alignment buttons fit on one row. */
+.report-template-build__toolbar-sidebar {
+  flex: 0 0 132px;
+}
+
+.report-template-build__toolbar-row--tight {
+  gap: 3px;
+}
+
+.report-template-build__toolbar-button svg {
+  display: block;
+}
+
+/* The page + its (screen-only) margin guides */
+.report-template-build__canvas-page {
+  position: relative;
+}
+
+.report-template-build__margin-guides {
+  position: absolute;
+  border: 1px dashed #91a7c0;
+  pointer-events: none;
+}
+
+/* Bullet lists typed into the page */
+.report-template-build__canvas ul {
+  list-style: disc;
+  margin: 0;
+  padding-left: 1.6em;
+}
+
+.report-template-build__canvas li {
+  margin: 0;
+}
+
+/* Editor bar: template name (left) + Save (right), above the workspace */
+.report-template-build__editor-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.report-template-build__title-input {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: 420px;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+}
+
+.report-template-build__title-input:hover {
+  border-color: #ced4da;
+}
+
+.report-template-build__title-input:focus {
+  border-color: #1f4e79;
+  background: #ffffff;
+  outline: none;
+}
+
+.report-template-build__editor-bar-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.report-template-build__save-message {
+  font-size: 13px;
+  color: #2b8a3e;
+}
+
+.report-template-build__save-message--error {
+  color: #c92a2a;
+}
+
+.report-template-build__save-message--pending {
+  color: #868e96;
+  font-style: italic;
+}
+
+/* Margin button in the toolbar + its popup */
+.report-template-build__margin-button {
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Lighter, right-aligned backdrop so the page (with its live margin guides) stays visible beside the popup. */
+.report-template-build__modal-backdrop--side {
+  background: rgba(0, 0, 0, 0.12);
+  justify-content: flex-end;
+  padding-right: 6%;
+}
+
+.report-template-build__options-subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  color: #495057;
+}
+
+.report-template-build__margin-dialog-subtitle {
+  margin-top: 16px;
+}
+
+.report-template-build__margin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+
+.report-template-build__margin-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.report-template-build__options-hint {
+  font-size: 12px;
+  color: #868e96;
+  margin: 10px 0;
+}
+
+.report-template-build__options-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #495057;
+  cursor: pointer;
+}
+
+/* Saved templates (list view) */
+.report-template-build__saved {
+  margin-top: 24px;
+  max-width: 760px;
+}
+
+.report-template-build__saved-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+
+.report-template-build__saved-note {
+  font-size: 13px;
+  color: #868e96;
+  margin: 0 0 8px 0;
+}
+
+.report-template-build__saved-note--error {
+  color: #c92a2a;
+}
+
+.report-template-build__saved-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.report-template-build__saved-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+}
+
+.report-template-build__saved-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.report-template-build__saved-name {
+  font-size: 14px;
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.report-template-build__saved-meta {
+  font-size: 12px;
+  color: #868e96;
+}
+
+.report-template-build__saved-actions {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.report-template-build__delete-button {
+  background: none;
+  border: 1px solid #e03131;
+  color: #e03131;
+  border-radius: 4px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.report-template-build__delete-button:hover {
+  background: #fff5f5;
+}
+
+.report-template-build__delete-button--solid {
+  background: #e03131;
+  color: #ffffff;
+}
+
+.report-template-build__delete-button--solid:hover {
+  background: #c92a2a;
+}
+
+.report-template-build__delete-button:disabled,
+.report-template-build__back-button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Dialog text */
+.report-template-build__modal-text {
+  font-size: 13px;
+  color: #495057;
+  margin: 0;
+}
+
+.report-template-build__modal-error {
+  font-size: 12px;
+  color: #c92a2a;
+  margin: 8px 0 0 0;
+}

@@ -1,0 +1,328 @@
+/* Patient Detail page layout (new). Uses its own class names (pd-*, sheet-preview*)
+   so nothing in global.css needs to change. The old .patient-detail__workspace /
+   .live-sheet-preview rules in global.css are simply no longer used. */
+
+/* This page fills the whole content area and never scrolls itself. */
+.app-content:has(> .pd-page) {
+  padding: 16px 20px;
+  overflow: hidden;
+}
+
+.pd-page {
+  height: 100%;
+  min-height: 0;
+}
+
+.pd-workspace {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+  min-height: 0;
+  align-items: stretch;
+}
+
+/* ---- Left: print preview (60%), starts at the very top ---- */
+.pd-preview-pane {
+  flex: 0 0 calc(60% - 10px);
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-preview-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 8px;
+}
+
+.pd-preview-actions {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+/* ---- Right: patient info + all images (40%) ---- */
+.pd-side-pane {
+  flex: 0 0 calc(40% - 10px);
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-side-header {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.pd-side-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pd-info {
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px 16px;
+  margin: 10px 0 12px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+}
+
+.pd-info .patient-detail__info-field {
+  min-width: 0;
+}
+
+.pd-info .patient-detail__info-value {
+  overflow-wrap: anywhere;
+}
+
+.pd-images-title {
+  flex: 0 0 auto;
+  margin: 0;
+  font-size: 15px;
+  color: #343a40;
+}
+
+.pd-side-pane .image-print__toolbar {
+  flex: 0 0 auto;
+  margin: 8px 0;
+}
+
+/* Thumbnails take the remaining height and scroll inside if there are many. */
+.pd-side-pane .thumbnail-grid {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  align-content: flex-start;
+  padding-right: 4px;
+}
+
+.pd-side-pane .patient-detail__report-actions {
+  flex: 0 0 auto;
+  margin-top: 10px;
+}
+
+.pd-single-page-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  font-size: 13px;
+  font-weight: 600;
+  color: #495057;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* ---- Sheet preview (LiveImageSheetPreview) ---- */
+.sheet-preview {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  background: #e9ecef;
+  overflow: hidden;
+}
+
+/* Fixed-size outer box that gets measured; the scrolling stage fills it. */
+.sheet-preview__viewport {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  min-width: 0;
+}
+
+.sheet-preview__stage {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  padding: 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow: auto;
+  scrollbar-gutter: stable;
+}
+
+/* Pages are centred with auto margins, which safely fall back to left/top
+   alignment (instead of clipping) once a zoomed page is bigger than the panel. */
+.sheet-preview__stage > .sheet-preview__page {
+  flex: 0 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sheet-preview__stage--fit > .sheet-preview__page:first-child {
+  margin-top: auto;
+}
+
+.sheet-preview__stage--fit > .sheet-preview__page:last-child {
+  margin-bottom: auto;
+}
+
+/* Single Page ticked + several sheets: scrolling moves one whole page at a time. */
+.sheet-preview__stage--snap {
+  scroll-snap-type: y mandatory;
+}
+
+.sheet-preview__stage--snap > .sheet-preview__page {
+  scroll-snap-align: center;
+}
+
+.sheet-preview__placeholder {
+  margin: auto;
+  color: #868e96;
+  font-size: 13px;
+}
+
+.sheet-preview__page {
+  position: relative;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 3%;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+.sheet-preview__grid {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+}
+
+.sheet-preview__cell {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid #e9ecef;
+  border-radius: 3px;
+  overflow: hidden;
+  background: #111;
+}
+
+/* Image-area mode (template with a selected image area): the cell is either
+   completely clean, or a dark box (#1c1f24) — same as print. Keep the colour in
+   sync with GrayBoxColor in ImageSheetComposer.cs. */
+.sheet-preview__cell--plain {
+  background: transparent;
+  border-color: transparent;
+}
+
+.sheet-preview__cell--gray {
+  background: #1c1f24;
+  border: none;
+  border-radius: 0;
+  padding: 4px;
+}
+
+.sheet-preview__cell img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.sheet-preview__cell-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #adb5bd;
+  font-size: 11px;
+}
+
+.sheet-preview__page-badge {
+  position: absolute;
+  right: 6px;
+  bottom: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #868e96;
+}
+
+/* Zoom controls under the preview */
+.sheet-preview__zoombar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 8px;
+  border-top: 1px solid #ced4da;
+  background: #f8f9fa;
+  font-size: 12px;
+  color: #495057;
+}
+
+.sheet-preview__zoombar button {
+  min-width: 28px;
+  background: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2933;
+  cursor: pointer;
+}
+
+.sheet-preview__zoombar button:hover:not(:disabled) {
+  background: #f1f3f5;
+}
+
+.sheet-preview__zoombar button:disabled {
+  color: #adb5bd;
+  cursor: default;
+}
+
+.sheet-preview__zoom-value {
+  min-width: 82px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.sheet-preview__zoom-hint {
+  margin-left: auto;
+  color: #868e96;
+}
+
+/* Very narrow windows: fall back to a stacked, scrollable page. */
+@media (max-width: 900px) {
+  .app-content:has(> .pd-page) {
+    overflow: auto;
+  }
+
+  .pd-page {
+    height: auto;
+  }
+
+  .pd-workspace {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .pd-preview-pane,
+  .pd-side-pane {
+    flex: 1 1 auto;
+  }
+
+  .pd-preview-pane .sheet-preview {
+    height: 70vh;
+  }
+}
